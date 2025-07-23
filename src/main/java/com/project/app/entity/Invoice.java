@@ -24,12 +24,10 @@ public class Invoice {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
-
     private String invoiceNumber;
     private LocalDate issueDate;
     private LocalDate dueDate;
     private Status status; // DRAFT, SENT, PAID, CANCELLED
-
     private Double totalAmount;
     private Double taxAmount;
     private Double discount;
