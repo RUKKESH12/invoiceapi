@@ -1,11 +1,10 @@
 package com.project.app.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 import com.project.app.service.UserServiceImps;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,18 +25,16 @@ import com.project.app.service.UserService;
 @RequestMapping("/api/users")
 public class UserController {
 
-    private final UserServiceImps userServiceImps;
+	@Autowired
+    private  UserServiceImps userServiceImps;
 
-    private final UserRepository userRepository;
+    @Autowired
+    private  UserRepository userRepository;
 
 	@Autowired
 	private UserService userService;
 
-    UserController(UserRepository userRepository, UserServiceImps userServiceImps) {
-        this.userRepository = userRepository;
-        this.userServiceImps = userServiceImps;
-    }
-
+   
 	@PostMapping
 	public ResponseEntity<User> createUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.saveUser(user));
